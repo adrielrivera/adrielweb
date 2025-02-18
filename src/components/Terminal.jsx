@@ -10,22 +10,46 @@ const formatCertification = (cert) => {
   if (!cert) return 'Invalid certificate file';
   
   return (
-    `<div class="certificate-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-      <h1 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.8rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${cert.name}</h1>
-      ${cert.image ? `<img src="${cert.image === '../assets/Cisco.png' ? ciscoImage : cert.image === '../assets/cs0.png' ? cs0Image : cs1Image}" alt="${cert.name} Certificate" style="max-width: 100%; margin: 1.5rem 0; border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 255, 0, 0.2);" />` : ''}
+    `<div class="certificate-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 35px; border-radius: 16px; background-color: rgba(0, 0, 0, 0.92); box-shadow: 0 16px 48px rgba(0, 255, 0, 0.15); margin: 30px 0; backdrop-filter: blur(16px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+      <h1 style="color: #00ff00; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px; font-size: 2rem; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); text-align: center;">${cert.name}</h1>
       
-      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">DETAILS</h2>
-      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Issuer:</strong> ${cert.issuer}</p>
-      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Year:</strong> ${cert.year}</p>
-      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Status:</strong> ${cert.status}</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; margin: 2rem 0;">
+        ${cert.image ? `
+        <div style="background: rgba(0, 255, 0, 0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15);">
+          <h2 style="color: #00ff00; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase;">Certificate</h2>
+          <img src="${cert.image === '../assets/Cisco.png' ? ciscoImage : cert.image === '../assets/cs0.png' ? cs0Image : cs1Image}" 
+               alt="${cert.name} Certificate" 
+               style="width: 100%; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 255, 0, 0.2);" />
+        </div>` : ''}
+        
+        <div style="background: rgba(0, 255, 0, 0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15);">
+          <h2 style="color: #00ff00; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase;">Details</h2>
+          <div style="display: grid; gap: 1rem;">
+            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+              <strong style="color: rgba(0, 255, 0, 0.8);">Issuer:</strong> ${cert.issuer}
+            </p>
+            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+              <strong style="color: rgba(0, 255, 0, 0.8);">Year:</strong> ${cert.year}
+            </p>
+            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+              <strong style="color: rgba(0, 255, 0, 0.8);">Status:</strong> ${cert.status}
+            </p>
+          </div>
+        </div>
+      </div>
       
-      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">DESCRIPTION</h2>
-      <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8;">${cert.writeup}</p>
-      
-      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">SKILLS</h2>
-      <ul style="color: #00ff00; list-style-position: inside; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem;">
-        ${cert.skills.map(skill => `<li style="margin-bottom: 0.3rem; font-size: 1.1rem; padding: 0.4rem 0.8rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px; transition: all 0.3s ease;">${skill}</li>`).join('')}
-      </ul>
+      <div style="background: rgba(0, 255, 0, 0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15); margin-top: 2rem;">
+        <h2 style="color: #00ff00; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase;">Description</h2>
+        <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; padding: 15px; background: rgba(0, 255, 0, 0.1); border-radius: 8px;">${cert.writeup}</p>
+        
+        <h3 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.3rem; letter-spacing: 1px; text-transform: uppercase;">Skills</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px;">
+          ${cert.skills.map(skill => `
+            <div style="color: #00ff00; font-size: 1rem; padding: 10px; background: rgba(0, 255, 0, 0.1); border-radius: 6px; text-align: center; transition: all 0.3s ease;">
+              ${skill}
+            </div>`).join('')}
+        </div>
+      </div>
     </div>`
   );
 };
@@ -199,14 +223,23 @@ const Terminal = () => {
           // Check if the file exists in the current directory's content
           if (dirContent.content && typeof dirContent.content === 'object') {
             const content = dirContent.content[args[0]];
-            if (content) return typeof content === 'string' ? `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; font-family: 'Share Tech Mono', monospace; color: #00ff00;">
-                <div style="padding: 20px; border-right: 1px solid rgba(0, 255, 0, 0.2);">
-                  <h3 style="color: #00ff00; font-size: 1.6rem; margin: 0 0 15px 0; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${args[0]}</h3>
-                  <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">File Content</span>
+            if (content) return typeof content === 'string' ? `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 35px; border-radius: 16px; background-color: rgba(0, 0, 0, 0.92); box-shadow: 0 16px 48px rgba(0, 255, 0, 0.15); margin: 30px 0; backdrop-filter: blur(16px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+              <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+                <div style="padding: 25px; border-bottom: 2px solid rgba(0, 255, 0, 0.15); display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h3 style="color: #00ff00; font-size: 2rem; margin: 0 0 12px 0; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); font-weight: 600;">${args[0]}</h3>
+                    <span style="color: rgba(0, 255, 0, 0.8); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(0, 255, 0, 0.1); padding: 6px 12px; border-radius: 4px;">File Content</span>
+                  </div>
+                  <div style="width: 40px; height: 40px; border: 2px solid rgba(0, 255, 0, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #00ff00; font-size: 1.2rem;">📄</span>
+                  </div>
                 </div>
-                <div style="padding: 20px;">
-                  <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05);">${content}</div>
+                <div style="padding: 25px;">
+                  <div style="white-space: pre-wrap; line-height: 2; font-size: 1.3rem; padding: 30px; background-color: rgba(0, 255, 0, 0.05); border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15); box-shadow: inset 0 0 30px rgba(0, 255, 0, 0.05); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent); animation: scanline 2s linear infinite;"></div>
+                    <div style="text-align: left;">${content}</div>
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.3), transparent); animation: scanline 2s linear infinite 1s;"></div>
+                  </div>
                 </div>
               </div>
             </div>` : JSON.stringify(content, null, 2);
@@ -216,13 +249,13 @@ const Terminal = () => {
         const fileContent = getFileContent(args[0]);
         if (fileContent) {
           return `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; font-family: 'Share Tech Mono', monospace; color: #00ff00;">
-              <div style="padding: 20px; border-right: 1px solid rgba(0, 255, 0, 0.2);">
+            <div style="display: grid; grid-template-columns: 1fr; gap: 25px; font-family: 'Share Tech Mono', monospace; color: #00ff00; text-align: left;">
+              <div style="padding: 20px; border-bottom: 1px solid rgba(0, 255, 0, 0.2);">
                 <h3 style="color: #00ff00; font-size: 1.6rem; margin: 0 0 15px 0; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${args[0]}</h3>
                 <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">File Content</span>
               </div>
               <div style="padding: 20px;">
-                <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05);">${fileContent}</div>
+                <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05); text-align: left;">${fileContent}</div>
               </div>
             </div>
           </div>`;

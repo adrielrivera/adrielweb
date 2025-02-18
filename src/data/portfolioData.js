@@ -1,5 +1,25 @@
 // Portfolio content and security challenges
 export const portfolioData = {
+  introductions: {
+    description: 'Personal Introduction and Background',
+    content: {
+      'about-me.txt': `<section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem; margin-bottom: 1.5rem;">
+          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Education</h2>
+          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">I am a dedicated secondary school student at the School of Science and Technology (SST), taking the Engineering+ subject combination, which includes applied subjects in Computing+ and Electronics. As part of the Integrated Diploma Programme (IDP), a through-train pathway to Ngee Ann Polytechnic, I am working towards joining the Cybersecurity & Digital Forensics course at the School of ICT.</p>
+        </section>
+
+        <section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem; margin-bottom: 1.5rem;">
+          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Aspiration</h2>
+          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">I am an aspiring Cybersecurity professional, specifically in the field of penetration testing. Driven by curiosity and a passion for problem-solving, I am eager to contribute to the ever-evolving landscape of digital security. My commitment to cybersecurity is reflected in my continuous pursuit of knowledge and practical skills in this field.</p>
+        </section>
+
+        <section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem;">
+          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Plans</h2>
+          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">Currently preparing for the eJPT (eLearnSecurity Junior Penetration Tester) certification. My future goals include obtaining the eCPPT (eLearnSecurity Certified Professional Penetration Tester) and OSCP (Offensive Security Certified Professional) certifications to further my expertise in offensive security techniques.</p>
+        </section>`
+    }
+  },
+
   certifications: {
     description: 'Professional Certifications and Achievements',
     content: {
@@ -13,7 +33,7 @@ export const portfolioData = {
         skills: ['Network Security', 'Cryptography', 'Threat Detection', 'Security Protocols']
       },
       'nus-cs0.txt': {
-        name: 'NUS SoC CS0 Certificate',
+        name: 'NUS SoC CS0',
         issuer: 'National University of Singapore',
         year: 2024,
         status: 'Completed',
@@ -22,7 +42,7 @@ export const portfolioData = {
         skills: ['Programming Fundamentals', 'Problem Solving', 'Computational Thinking']
       },
       'nus-cs1.txt': {
-        name: 'NUS SoC CS1 Certificate',
+        name: 'NUS SoC CS1',
         issuer: 'National University of Singapore',
         year: 2024,
         status: 'Completed',
@@ -111,8 +131,7 @@ export const portfolioData = {
     }
   },
   files: {
-    'readme.txt': 'Welcome to my Interactive Portfolio!\n\nThis terminal contains information about my:\n- Certifications\n- Competitions\n- Leadership Experience\n- IDP Achievements\n\nUse "ls" to list directories and "cd" to navigate.\nType "help" for more commands.',
-    'about.txt': 'I am a passionate student leader and tech enthusiast with experience in:\n- Cybersecurity and System Development\n- Project Management and Team Leadership\n- Event Planning and Coordination\n\nCurrently focused on IDP experiences and leadership roles.',
+    'readme.txt': 'Welcome to my Interactive Portfolio!\n\nThis terminal contains information about my:\n- Overview\n- Certifications\n- Competitions\n- Leadership Experience\n- IDP Achievements\n\nUse "ls" to list directories and "cd" to navigate.\nType "help" for more commands.',
     'contact.txt': 'Feel free to reach out!\nEmail: adriel.rivera@student.example.com\nGitHub: github.com/adriel-rivera\nLinkedIn: linkedin.com/in/adriel-rivera'
   }
 };
