@@ -1,13 +1,50 @@
 // Portfolio content and security challenges
 export const portfolioData = {
-  projects: {
-    description: 'Project and Leadership Experience - Security Level 1 required',
+  certifications: {
+    description: 'Professional Certifications and Achievements',
+    content: {
+      'cisco-cybersecurity.txt': {
+        name: 'Cisco Cybersecurity Essentials',
+        issuer: 'Cisco',
+        year: 2024,
+        status: 'Completed',
+        image: '/cisco-cybersecurity.png',
+        writeup: 'Successfully completed the Cisco Cybersecurity Essentials certification, gaining expertise in fundamental cybersecurity concepts and practices.',
+        skills: ['Network Security', 'Cryptography', 'Threat Detection', 'Security Protocols']
+      },
+      'nus-cs0.txt': {
+        name: 'NUS SoC CS0 Certificate',
+        issuer: 'National University of Singapore',
+        year: 2024,
+        status: 'Completed',
+        image: '/certificates/nus-cs0.png',
+        writeup: 'Mastered fundamental programming concepts and computational thinking through NUS School of Computing\'s foundational course.',
+        skills: ['Programming Fundamentals', 'Problem Solving', 'Computational Thinking']
+      },
+      'nus-cs1.txt': {
+        name: 'NUS SoC CS1 Certificate',
+        issuer: 'National University of Singapore',
+        year: 2024,
+        status: 'Completed',
+        image: '/certificates/nus-cs1.png',
+        writeup: 'Advanced programming course focusing on data structures, algorithms, and software development principles.',
+        skills: ['Data Structures', 'Algorithms', 'Software Development', 'Code Optimization']
+      }
+    }
+  },
+  competitions: {
+    description: 'Competition Achievements and Participations',
     content: [
       {
-        name: 'Recess Gym Booking System',
-        description: 'Student-Initiated Project',
-        details: 'Currently developing and maintaining a booking system for gym facilities (2024-Present).'
-      },
+        name: 'Seibersecc CTF 2024',
+        achievement: '4th Place',
+        type: 'Team Competition'
+      }
+    ]
+  },
+  leadership: {
+    description: 'Leadership Roles and Responsibilities',
+    content: [
       {
         name: 'House Leadership',
         description: 'Blue House Captain (2024-2025)',
@@ -17,67 +54,6 @@ export const portfolioData = {
         name: 'Junior House Leadership',
         description: 'Junior House Leader (2023-2024)',
         details: 'Assisted in house management and event coordination under Adele Lim.'
-      }
-    ]
-  },
-  skills: {
-    description: 'Technical Skills and Certifications - Security Level 1 required',
-    content: {
-      'Cybersecurity': 95,
-      'Project Management': 85,
-      'Leadership': 90,
-      'Event Planning': 88,
-      'System Development': 85
-    }
-  },
-  certifications: {
-    description: 'Professional Certifications - Security Level 1 required',
-    content: {
-      'cisco-cybersecurity.txt': {
-        name: 'Cisco Cybersecurity Essentials',
-        issuer: 'Cisco',
-        year: 2024,
-        status: 'Completed',
-        image: '/cisco-cybersecurity.png',
-        writeup: 'Successfully completed the Cisco Cybersecurity Essentials certification, gaining expertise in fundamental cybersecurity concepts and practices. This certification validates my understanding of network security principles, threat detection methodologies, and cybersecurity best practices.',
-        skills: ['Network Security', 'Cryptography', 'Threat Detection', 'Security Protocols']
-      },
-      'nus-cs0.txt': {
-        name: 'NUS SoC CS0 Certificate',
-        issuer: 'National University of Singapore',
-        year: 2024,
-        status: 'Completed',
-        image: '/certificates/nus-cs0.png',
-        writeup: 'Mastered fundamental programming concepts and computational thinking through NUS School of Computing\'s foundational course. Developed strong problem-solving skills and basic programming proficiency.',
-        skills: ['Programming Fundamentals', 'Problem Solving', 'Computational Thinking']
-      },
-      'nus-cs1.txt': {
-        name: 'NUS SoC CS1 Certificate',
-        issuer: 'National University of Singapore',
-        year: 2024,
-        status: 'Completed',
-        image: '/certificates/nus-cs1.png',
-        writeup: 'Advanced programming course focusing on data structures, algorithms, and software development principles. Gained practical experience in building efficient and scalable solutions.',
-        skills: ['Data Structures', 'Algorithms', 'Software Development', 'Code Optimization']
-      },
-      'google-cybersecurity.txt': {
-        name: 'Google Cybersecurity Professional',
-        issuer: 'Google',
-        year: 2025,
-        status: 'Planned',
-        image: null,
-        writeup: 'Upcoming certification focusing on advanced cybersecurity concepts, cloud security, and incident response. Will enhance expertise in modern security practices and tools.',
-        skills: ['Cloud Security', 'Incident Response', 'Security Analysis', 'Risk Management']
-      }
-    }
-  },
-  achievements: {
-    description: 'Competitions and Events - Security Level 1 required',
-    content: [
-      {
-        name: 'Seibersecc CTF 2024',
-        achievement: '4th Place',
-        type: 'Team Competition'
       },
       {
         name: 'Expose Planning Committee',
@@ -101,46 +77,44 @@ export const portfolioData = {
       }
     ]
   },
-  contact: {
-    description: 'Secure communication channels - Security Level 1 required',
+  idp: {
+    description: 'IDP Experiences and Achievements',
     content: {
-      email: 'encrypted:base64:YWRyaWVsQGV4YW1wbGUuY29t',
-      linkedin: 'encrypted:base64:aHR0cHM6Ly9saW5rZWRpbi5jb20vaW4vYWRyaWVs',
-      github: 'encrypted:base64:aHR0cHM6Ly9naXRodWIuY29tL2FkcmllbA=='
-    }
-  },
-  secure: {
-    description: 'Restricted Area - Security Level 2 required',
-    content: {
-      'mainframe.sys': 'Encrypted system files - Requires decryption key',
-      'backdoor.exe': 'Binary analysis challenge - Find the hidden message'
+      'stmicro-attachment.txt': {
+        name: 'STMicroelectronics Work Attachment',
+        year: '2024',
+        status: 'Completed',
+        writeup: 'Industry exposure and hands-on experience in microelectronics. Gained practical experience in semiconductor industry, working with cutting-edge technology and industry professionals.',
+        skills: ['Microelectronics', 'Semiconductor Technology', 'Industry Experience', 'Technical Skills']
+      },
+      'capstone-project.txt': {
+        name: 'Capstone Project',
+        year: '2024',
+        status: 'In Progress',
+        writeup: 'Final year project implementation focusing on real-world applications. Applied technical skills in project development and demonstrated problem-solving capabilities.',
+        skills: ['Project Management', 'Technical Implementation', 'Problem Solving', 'Documentation']
+      },
+      'big-d-camp.txt': {
+        name: 'Big D Camp',
+        year: '2024',
+        status: 'Completed',
+        writeup: 'Intensive leadership development program enhancing team management and leadership capabilities. Participated in workshops and practical exercises to develop essential leadership skills.',
+        skills: ['Leadership', 'Team Management', 'Communication', 'Strategic Planning']
+      },
+      'artc-camp.txt': {
+        name: 'ARTC Camp',
+        year: '2024',
+        status: 'Completed',
+        writeup: 'Advanced technology and research camp exploring cutting-edge technologies and research methodologies. Gained exposure to latest technological trends and research practices.',
+        skills: ['Research Methodology', 'Advanced Technology', 'Innovation', 'Technical Analysis']
+      }
     }
   },
   files: {
-    'readme.txt': 'Welcome to my Interactive Portfolio!\n\nThis terminal contains information about my:\n- Projects and Leadership Experience\n- Technical Skills\n- Certifications\n- Achievements and Events\n\nUse "ls" to list directories and "cd" to navigate.\nType "help" for more commands.',
-    'about.txt': 'I am a passionate student leader and tech enthusiast with experience in:\n- Cybersecurity and System Development\n- Project Management and Team Leadership\n- Event Planning and Coordination\n\nCurrently working on the Recess Gym Booking System and serving as Blue House Captain.',
+    'readme.txt': 'Welcome to my Interactive Portfolio!\n\nThis terminal contains information about my:\n- Certifications\n- Competitions\n- Leadership Experience\n- IDP Achievements\n\nUse "ls" to list directories and "cd" to navigate.\nType "help" for more commands.',
+    'about.txt': 'I am a passionate student leader and tech enthusiast with experience in:\n- Cybersecurity and System Development\n- Project Management and Team Leadership\n- Event Planning and Coordination\n\nCurrently focused on IDP experiences and leadership roles.',
     'contact.txt': 'Feel free to reach out!\nEmail: adriel.rivera@student.example.com\nGitHub: github.com/adriel-rivera\nLinkedIn: linkedin.com/in/adriel-rivera'
-  },
-  challenges: [
-    {
-      level: 1,
-      name: 'Basic Access',
-      hint: 'The password is encoded in base64 in encrypted.dat',
-      solution: 'hacktheplanet'
-    },
-    {
-      level: 2,
-      name: 'Advanced Access',
-      hint: 'Look for patterns in the Matrix',
-      solution: 'matrix'
-    },
-    {
-      level: 3,
-      name: 'Root Access',
-      hint: 'What was the name of the first computer virus?',
-      solution: 'creeper'
-    }
-  ]
+  }
 };
 
 export const getCurrentDirectory = (path) => {
