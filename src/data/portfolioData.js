@@ -8,7 +8,7 @@ export const portfolioData = {
         issuer: 'Cisco',
         year: 2024,
         status: 'Completed',
-        image: '/cisco-cybersecurity.png',
+        image: '../assets/Cisco.png',
         writeup: 'Successfully completed the Cisco Cybersecurity Essentials certification, gaining expertise in fundamental cybersecurity concepts and practices.',
         skills: ['Network Security', 'Cryptography', 'Threat Detection', 'Security Protocols']
       },
@@ -17,7 +17,7 @@ export const portfolioData = {
         issuer: 'National University of Singapore',
         year: 2024,
         status: 'Completed',
-        image: '/certificates/nus-cs0.png',
+        image: '../assets/cs0.png',
         writeup: 'Mastered fundamental programming concepts and computational thinking through NUS School of Computing\'s foundational course.',
         skills: ['Programming Fundamentals', 'Problem Solving', 'Computational Thinking']
       },
@@ -26,7 +26,7 @@ export const portfolioData = {
         issuer: 'National University of Singapore',
         year: 2024,
         status: 'Completed',
-        image: '/certificates/nus-cs1.png',
+        image: '../assets/cs1.png',
         writeup: 'Advanced programming course focusing on data structures, algorithms, and software development principles.',
         skills: ['Data Structures', 'Algorithms', 'Software Development', 'Code Optimization']
       }

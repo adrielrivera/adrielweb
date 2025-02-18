@@ -2,53 +2,58 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getCurrentDirectory, isValidPath, getFileContent, portfolioData } from '../data/portfolioData';
+import ciscoImage from '../assets/Cisco.png';
+import cs0Image from '../assets/cs0.png';
+import cs1Image from '../assets/cs1.png';
 
 const formatCertification = (cert) => {
   if (!cert) return 'Invalid certificate file';
   
   return (
-    `<div class="certificate-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-      <h1 style="color: #00ff00; margin-bottom: 1rem; text-transform: uppercase;">${cert.name}</h1>
-      ${cert.image ? `<img src="${cert.image}" alt="${cert.name} Certificate" style="max-width: 100%; margin: 1rem 0;" />` : ''}
+    `<div class="certificate-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+      <h1 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.8rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${cert.name}</h1>
+      ${cert.image ? `<img src="${cert.image === '../assets/Cisco.png' ? ciscoImage : cert.image === '../assets/cs0.png' ? cs0Image : cs1Image}" alt="${cert.name} Certificate" style="max-width: 100%; margin: 1.5rem 0; border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 255, 0, 0.2);" />` : ''}
       
-      <h2 style="color: #00ff00; margin: 1rem 0;">DETAILS</h2>
-      <p style="color: #00ff00;"><strong>Issuer:</strong> ${cert.issuer}</p>
-      <p style="color: #00ff00;"><strong>Year:</strong> ${cert.year}</p>
-      <p style="color: #00ff00;"><strong>Status:</strong> ${cert.status}</p>
+      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">DETAILS</h2>
+      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Issuer:</strong> ${cert.issuer}</p>
+      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Year:</strong> ${cert.year}</p>
+      <p style="color: #00ff00; font-size: 1.1rem; margin-bottom: 0.8rem;"><strong>Status:</strong> ${cert.status}</p>
       
-      <h2 style="color: #00ff00; margin: 1rem 0;">DESCRIPTION</h2>
-      <p style="color: #00ff00;">${cert.writeup}</p>
+      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">DESCRIPTION</h2>
+      <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8;">${cert.writeup}</p>
       
-      <h2 style="color: #00ff00; margin: 1rem 0;">SKILLS</h2>
-      <ul style="color: #00ff00; list-style-position: inside; padding-left: 0;">
-        ${cert.skills.map(skill => `<li style="margin-bottom: 0.3rem;">${skill}</li>`).join('')}
+      <h2 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.4rem; letter-spacing: 1px;">SKILLS</h2>
+      <ul style="color: #00ff00; list-style-position: inside; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem;">
+        ${cert.skills.map(skill => `<li style="margin-bottom: 0.3rem; font-size: 1.1rem; padding: 0.4rem 0.8rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px; transition: all 0.3s ease;">${skill}</li>`).join('')}
       </ul>
     </div>`
   );
 };
 
 const formatLeadershipEntry = (entry) => {
-  return `<div class="content-card leadership-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-    <h2 style="color: #00ff00; margin-bottom: 1rem;">${entry.name}</h2>
-    <p class="role" style="color: #00ff00;">${entry.description || entry.role}</p>
-    ${entry.details ? `<p class="details" style="color: #00ff00; margin-top: 0.5rem;">${entry.details}</p>` : ''}
-    ${entry.year ? `<p class="year" style="color: #00ff00; margin-top: 0.5rem;">Year: ${entry.year}</p>` : ''}
+  return `<div class="content-card leadership-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+    <h2 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.6rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${entry.name}</h2>
+    <p class="role" style="color: #00ff00; font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 0.5px;">${entry.description || entry.role}</p>
+    ${entry.details ? `<p class="details" style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; margin: 1rem 0; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.details}</p>` : ''}
+    ${entry.year ? `<p class="year" style="color: #00ff00; font-size: 1.1rem; margin-top: 1rem; opacity: 0.8;">Year: ${entry.year}</p>` : ''}
   </div>`;
 };
 
 const formatIDPEntry = (entry) => {
-  return `<div class="content-card idp-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-    <h2 style="color: #00ff00; margin-bottom: 1rem;">${entry.name}</h2>
-    <p class="status" style="color: #00ff00;">Status: ${entry.status}</p>
-    <p class="year" style="color: #00ff00;">Year: ${entry.year}</p>
-    <div class="description" style="margin-top: 1rem;">
-      <h3 style="color: #00ff00; margin-bottom: 0.5rem;">Overview</h3>
-      <p style="color: #00ff00;">${entry.writeup}</p>
+  return `<div class="content-card idp-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+    <h2 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.6rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${entry.name}</h2>
+    <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
+      <p class="status" style="color: #00ff00; font-size: 1.1rem; padding: 0.5rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Status: ${entry.status}</p>
+      <p class="year" style="color: #00ff00; font-size: 1.1rem; padding: 0.5rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Year: ${entry.year}</p>
     </div>
-    <div class="skills" style="margin-top: 1rem;">
-      <h3 style="color: #00ff00; margin-bottom: 0.5rem;">Key Skills</h3>
-      <ul style="color: #00ff00; list-style-position: inside; padding-left: 0;">
-        ${entry.skills.map(skill => `<li style="margin-bottom: 0.3rem;">${skill}</li>`).join('')}
+    <div class="description" style="margin: 1.5rem 0;">
+      <h3 style="color: #00ff00; margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 1px;">Overview</h3>
+      <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.writeup}</p>
+    </div>
+    <div class="skills" style="margin-top: 1.5rem;">
+      <h3 style="color: #00ff00; margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 1px;">Key Skills</h3>
+      <ul style="color: #00ff00; list-style-position: inside; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem;">
+        ${entry.skills.map(skill => `<li style="margin-bottom: 0.3rem; font-size: 1.1rem; padding: 0.4rem 0.8rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px; transition: all 0.3s ease;">${skill}</li>`).join('')}
       </ul>
     </div>
   </div>`;
@@ -96,23 +101,23 @@ const Terminal = () => {
     switch (cmd) {
       case 'help':
         return isAuthenticated
-          ? `<div class="help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-              <h2 style="color: #00ff00; font-size: 1.3rem; margin-bottom: 1rem; text-align: center; text-transform: uppercase; letter-spacing: 2px;">Available Commands</h2>
-              <div style="margin: 1rem 0;">
-                <p style="margin-bottom: 0.8rem;">📂 ls - Show what files and folders are here</p>
-                <p style="margin-bottom: 0.8rem;">📂 cd &lt;folder&gt; - Open a folder (use "cd .." to go back)</p>
-                <p style="margin-bottom: 0.8rem;">📄 cat &lt;file&gt; - Read a file</p>
-                <p style="margin-bottom: 0.8rem;">🔍 clear - Clean up the screen</p>
-                <p style="margin-bottom: 0.8rem;">🚪 logout - Exit the system</p>
+          ? `<div class="help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+              <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Available Commands</h2>
+              <div style="margin: 1.5rem 0; background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px;">
+                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">ls</span> - Show what files and folders are here</p>
+                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">cd</span> &lt;folder&gt; - Open a folder (use "cd .." to go back)</p>
+                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📄 <span style="color: #00ff00; font-weight: bold;">cat</span> &lt;file&gt; - Read a file</p>
+                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🔍 <span style="color: #00ff00; font-weight: bold;">clear</span> - Clean up the screen</p>
+                <p style="margin-bottom: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🚪 <span style="color: #00ff00; font-weight: bold;">logout</span> - Exit the system</p>
               </div>
-              <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 255, 0, 0.2);">
-                <p style="text-align: center; font-style: italic;">TL;DR: Use "ls" to look around, "cd" to move around, and "cat" to investigate!</p>
+              <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0, 255, 0, 0.2);">
+                <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: rgba(0, 255, 0, 0.8);">TL;DR: Use "ls" to look around, "cd" to move around, and "cat" to investigate!</p>
               </div>
             </div>`
-          : `<div class="login-help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-              <h2 style="color: #00ff00; font-size: 1.3rem; margin-bottom: 1rem; text-align: center; text-transform: uppercase; letter-spacing: 2px;">Welcome!</h2>
-              <p style="text-align: center;">Just type "login adriel" to start exploring my portfolio!</p>
-              <p style="text-align: center; margin-top: 0.5rem; font-style: italic;">Need help? Type "help" anytime to see this message again.</p>
+          : `<div class="login-help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+              <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Welcome!</h2>
+              <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">Just type "login adriel" to start exploring my portfolio!</p>
+              <p style="text-align: center; margin-top: 1rem; font-style: italic; font-size: 1.1rem; color: rgba(0, 255, 0, 0.8);">Need help? Type "help" anytime to see this message again.</p>
             </div>`;
       case 'login':
         return handleAuthentication(args[0]);
@@ -192,14 +197,28 @@ const Terminal = () => {
           // Check if the file exists in the current directory's content
           if (dirContent.content && typeof dirContent.content === 'object') {
             const content = dirContent.content[args[0]];
-            if (content) return typeof content === 'string' ? `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;"><div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.5;">${content}</div></div>` : JSON.stringify(content, null, 2);
+            if (content) return typeof content === 'string' ? `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+              <div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.8; font-size: 1.1rem;">
+                <div style="border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px; padding-bottom: 15px;">
+                  <h3 style="color: #00ff00; font-size: 1.4rem; margin: 0 0 10px 0; letter-spacing: 1.5px; text-transform: uppercase;">${args[0]}</h3>
+                  <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem;">File Content</span>
+                </div>
+                <div style="padding: 10px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px;">${content}</div>
+              </div>
+            </div>` : JSON.stringify(content, null, 2);
           }
         }
         
         const fileContent = getFileContent(args[0]);
         if (fileContent) {
-          return `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 20px; border-radius: 8px; background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 4px 16px rgba(0, 255, 0, 0.1); margin-bottom: 20px;">
-            <div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.5;">${fileContent}</div>
+          return `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
+            <div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.8; font-size: 1.1rem;">
+              <div style="border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px; padding-bottom: 15px;">
+                <h3 style="color: #00ff00; font-size: 1.4rem; margin: 0 0 10px 0; letter-spacing: 1.5px; text-transform: uppercase;">${args[0]}</h3>
+                <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem;">File Content</span>
+              </div>
+              <div style="padding: 10px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px;">${fileContent}</div>
+            </div>
           </div>`;
         }
         
@@ -244,24 +263,25 @@ const Terminal = () => {
     <Box
       onClick={handleTerminalClick}
       sx={{
-        backgroundColor: 'rgba(26, 26, 26, 0.95)',
+        backgroundColor: 'rgba(26, 26, 26, 0.97)',
         color: '#00ff00',
-        padding: 4,
+        padding: { xs: 2, sm: 3, md: 4 },
         borderRadius: 3,
         fontFamily: '"Share Tech Mono", "Fira Code", "Source Code Pro", monospace',
-        height: '70vh',
+        height: '80vh',
         overflow: 'auto',
-        boxShadow: '0 8px 32px rgba(0, 255, 0, 0.1)',
-        border: '1px solid rgba(0, 255, 0, 0.2)',
-        backdropFilter: 'blur(8px)',
+        boxShadow: '0 12px 40px rgba(0, 255, 0, 0.15)',
+        border: '1px solid rgba(0, 255, 0, 0.25)',
+        backdropFilter: 'blur(12px)',
         position: 'relative',
         '& *': {
           fontFamily: '"Share Tech Mono", "Fira Code", "Source Code Pro", monospace !important'
         },
-        transition: 'all 0.3s ease-in-out',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         '&:hover': {
-          boxShadow: '0 8px 32px rgba(0, 255, 0, 0.15)',
-          border: '1px solid rgba(0, 255, 0, 0.3)'
+          boxShadow: '0 16px 48px rgba(0, 255, 0, 0.2)',
+          border: '1px solid rgba(0, 255, 0, 0.4)',
+          transform: 'translateY(-2px)'
         },
         '&:before': {
           content: '""',
@@ -270,8 +290,23 @@ const Terminal = () => {
           left: 0,
           right: 0,
           height: '2px',
-          background: 'linear-gradient(90deg, rgba(0,255,0,0) 0%, rgba(0,255,0,0.5) 50%, rgba(0,255,0,0) 100%)',
-          animation: 'scanline 2s linear infinite'
+          background: 'linear-gradient(90deg, rgba(0,255,0,0) 0%, rgba(0,255,0,0.6) 50%, rgba(0,255,0,0) 100%)',
+          animation: 'scanline 2.5s linear infinite'
+        },
+        '&::-webkit-scrollbar': {
+          width: '8px',
+          height: '8px'
+        },
+        '&::-webkit-scrollbar-track': {
+          background: 'rgba(0, 255, 0, 0.05)',
+          borderRadius: '4px'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: 'rgba(0, 255, 0, 0.2)',
+          borderRadius: '4px',
+          '&:hover': {
+            background: 'rgba(0, 255, 0, 0.3)'
+          }
         }
       }}
     >
@@ -302,9 +337,9 @@ const Terminal = () => {
                 textAlign: 'center',
                 textTransform: 'uppercase',
                 letterSpacing: '2px'
-              }}>Adriel Rivera's Interactive Portfolio!</h1>
+              }}>Adriel Rivera</h1>
               
-              <p style={{ marginBottom: '1rem' }}>This is a fun way to explore my work and experience. It's super easy:</p>
+              <p style={{ marginBottom: '1rem' }}>Welcome to my interactive portfolio! This is a fun way to explore my achievements and experiences. It's super easy:</p>
               
               <ol style={{ 
                 listStyle: 'none', 
