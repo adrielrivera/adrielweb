@@ -62,8 +62,6 @@ const formatIDPEntry = (entry) => {
 const Terminal = () => {
   const [input, setInput] = useState('');
   const [commandHistory, setCommandHistory] = useState([]);
-  const [cursorVisible, setCursorVisible] = useState(true);
-  const [securityLevel, setSecurityLevel] = useState(0);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginAttempts, setLoginAttempts] = useState(3);
   const [currentPath, setCurrentPath] = useState('');
@@ -80,14 +78,13 @@ const Terminal = () => {
   const handleAuthentication = (password) => {
     if (password === 'adriel') {
       setIsAuthenticated(true);
-      setSecurityLevel(1);
       return 'Access Granted - Welcome to the portfolio! Type "help" to see what you can do here.';
     } else {
       setLoginAttempts((prev) => prev - 1);
       if (loginAttempts <= 1) {
         return 'Too many incorrect attempts. Please refresh the page to try again.';
       }
-      return `Incorrect password. ${loginAttempts - 1} attempts remaining. Hint: Try using "adriel"'`;
+      return `Incorrect password. ${loginAttempts - 1} attempts remaining. Hint: Try using "adriel"`;
     }
   };
 
@@ -101,17 +98,32 @@ const Terminal = () => {
     switch (cmd) {
       case 'help':
         return isAuthenticated
-          ? `<div class="help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-              <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Available Commands</h2>
-              <div style="margin: 1.5rem 0; background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px;">
-                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">ls</span> - Show what files and folders are here</p>
-                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">cd</span> &lt;folder&gt; - Open a folder (use "cd .." to go back)</p>
-                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📄 <span style="color: #00ff00; font-weight: bold;">cat</span> &lt;file&gt; - Read a file</p>
-                <p style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🔍 <span style="color: #00ff00; font-weight: bold;">clear</span> - Clean up the screen</p>
-                <p style="margin-bottom: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🚪 <span style="color: #00ff00; font-weight: bold;">logout</span> - Exit the system</p>
+          ? `<div class="help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 25px;">
+              <div style="padding: 20px; border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px;">
+                <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Command Center</h2>
+                <p style="color: rgba(0, 255, 0, 0.9); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">Navigate through my portfolio using these simple commands:</p>
               </div>
-              <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0, 255, 0, 0.2);">
-                <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: rgba(0, 255, 0, 0.8);">TL;DR: Use "ls" to look around, "cd" to move around, and "cat" to investigate!</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">ls</span></p>
+                  <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Show what files and folders are here</p>
+                </div>
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">cd</span></p>
+                  <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Open a folder (use "cd .." to go back)</p>
+                </div>
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📄 <span style="color: #00ff00; font-weight: bold;">cat</span></p>
+                  <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Read a file's contents</p>
+                </div>
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🔍 <span style="color: #00ff00; font-weight: bold;">clear</span></p>
+                  <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Clean up the screen</p>
+                </div>
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🚪 <span style="color: #00ff00; font-weight: bold;">logout</span></p>
+                  <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Exit the system</p>
+                </div>
               </div>
             </div>`
           : `<div class="login-help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
@@ -128,11 +140,7 @@ const Terminal = () => {
         
         if (typeof currentDir === 'object') {
           const entries = Object.entries(currentDir);
-          const filteredEntries = entries.filter(([key]) => {
-            if (key === 'secure' && securityLevel < 2) return false;
-            if (['projects', 'skills', 'contact'].includes(key) && securityLevel < 1) return false;
-            return true;
-          });
+          const filteredEntries = entries.filter(([key]) => key !== 'description');
           
           if (filteredEntries.length === 0) return 'No accessible items in this directory';
           
@@ -146,16 +154,10 @@ const Terminal = () => {
               }
               if (typeof value === 'object' && !Array.isArray(value)) {
                 if (key === 'content') {
-                  if (key === 'skills') {
-                    return Object.entries(value)
-                      .map(([skill, level]) => `${skill}: [${'■'.repeat(Math.floor(level/10))}${'□'.repeat(10-Math.floor(level/10))}] ${level}%`)
-                      .join('\n');
-                  }
                   return Object.keys(value).join('\n');
                 }
                 return key + '/';
               }
-              if (key === 'description') return null;
               return key;
             })
             .filter(Boolean)
@@ -198,12 +200,14 @@ const Terminal = () => {
           if (dirContent.content && typeof dirContent.content === 'object') {
             const content = dirContent.content[args[0]];
             if (content) return typeof content === 'string' ? `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-              <div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.8; font-size: 1.1rem;">
-                <div style="border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px; padding-bottom: 15px;">
-                  <h3 style="color: #00ff00; font-size: 1.4rem; margin: 0 0 10px 0; letter-spacing: 1.5px; text-transform: uppercase;">${args[0]}</h3>
-                  <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem;">File Content</span>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; font-family: 'Share Tech Mono', monospace; color: #00ff00;">
+                <div style="padding: 20px; border-right: 1px solid rgba(0, 255, 0, 0.2);">
+                  <h3 style="color: #00ff00; font-size: 1.6rem; margin: 0 0 15px 0; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${args[0]}</h3>
+                  <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">File Content</span>
                 </div>
-                <div style="padding: 10px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px;">${content}</div>
+                <div style="padding: 20px;">
+                  <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05);">${content}</div>
+                </div>
               </div>
             </div>` : JSON.stringify(content, null, 2);
           }
@@ -212,12 +216,14 @@ const Terminal = () => {
         const fileContent = getFileContent(args[0]);
         if (fileContent) {
           return `<div class="text-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
-            <div style="white-space: pre-wrap; font-family: 'Share Tech Mono', monospace; color: #00ff00; line-height: 1.8; font-size: 1.1rem;">
-              <div style="border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px; padding-bottom: 15px;">
-                <h3 style="color: #00ff00; font-size: 1.4rem; margin: 0 0 10px 0; letter-spacing: 1.5px; text-transform: uppercase;">${args[0]}</h3>
-                <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem;">File Content</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; font-family: 'Share Tech Mono', monospace; color: #00ff00;">
+              <div style="padding: 20px; border-right: 1px solid rgba(0, 255, 0, 0.2);">
+                <h3 style="color: #00ff00; font-size: 1.6rem; margin: 0 0 15px 0; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${args[0]}</h3>
+                <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">File Content</span>
               </div>
-              <div style="padding: 10px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px;">${fileContent}</div>
+              <div style="padding: 20px;">
+                <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05);">${fileContent}</div>
+              </div>
             </div>
           </div>`;
         }
@@ -230,7 +236,6 @@ const Terminal = () => {
         return '';
       case 'logout':
         setIsAuthenticated(false);
-        setSecurityLevel(0);
         setLoginAttempts(3);
         return 'Logged out successfully.';
       default:
@@ -321,37 +326,102 @@ const Terminal = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Typography variant="body2" sx={{ color: '#00ff00', mb: 2 }}>
+          <Typography variant="body2" sx={{ color: '#00ff00', mb: 2, textAlign: 'left' }}>
             <div className="welcome-card" style={{
               border: '1px solid rgba(0, 255, 0, 0.3)',
-              padding: '20px',
-              borderRadius: '8px',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              boxShadow: '0 4px 16px rgba(0, 255, 0, 0.1)',
-              marginBottom: '20px'
+              padding: '30px',
+              borderRadius: '12px',
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              boxShadow: '0 8px 32px rgba(0, 255, 0, 0.15)',
+              marginBottom: '25px',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '25px'
             }}>
-              <h1 style={{ 
-                color: '#00ff00', 
-                fontSize: '1.5rem', 
-                marginBottom: '1rem',
-                textAlign: 'center',
-                textTransform: 'uppercase',
-                letterSpacing: '2px'
-              }}>Adriel Rivera</h1>
-              
-              <p style={{ marginBottom: '1rem' }}>Welcome to my interactive portfolio! This is a fun way to explore my achievements and experiences. It's super easy:</p>
-              
-              <ol style={{ 
-                listStyle: 'none', 
-                padding: 0,
-                margin: '1rem 0'
+              <div style={{
+                padding: '20px',
+                borderRight: '1px solid rgba(0, 255, 0, 0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center'
               }}>
-                <li style={{ marginBottom: '0.5rem' }}>1. Just type 'login adriel' and press Enter</li>
-                <li style={{ marginBottom: '0.5rem' }}>2. Then type 'help' to see what you can do</li>
-                <li style={{ marginBottom: '0.5rem' }}>3. Want to see my projects? Type 'ls' to look around</li>
-                <li style={{ marginBottom: '0.5rem' }}>4. Type 'cd projects' to check out my work</li>
-                <li style={{ marginBottom: '0.5rem' }}>5. See a file you want to read? Type 'cat filename'</li>
-              </ol>
+                <h1 style={{ 
+                  color: '#00ff00', 
+                  fontSize: '2rem', 
+                  marginBottom: '1rem',
+                  textAlign: 'left',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  textShadow: '0 0 10px rgba(0, 255, 0, 0.3)'
+                }}>Adriel Rivera</h1>
+                
+                <p style={{ 
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.8',
+                  fontSize: '1.1rem',
+                  color: 'rgba(0, 255, 0, 0.9)',
+                  textAlign: 'left'
+                }}>Welcome to my interactive portfolio! This is a fun way to explore my achievements and experiences. It's super easy:</p>
+              </div>
+              
+              <div style={{
+                padding: '20px',
+                backgroundColor: 'rgba(0, 255, 0, 0.05)',
+                borderRadius: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center'
+              }}>
+                <ol style={{ 
+                  listStyle: 'none', 
+                  padding: 0,
+                  margin: '0',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px'
+                }}>
+                  <li style={{ 
+                    padding: '12px',
+                    backgroundColor: 'rgba(0, 255, 0, 0.1)',
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}>
+                    <span style={{ 
+                      backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                      borderRadius: '50%',
+                      width: '24px',
+                      height: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.9rem'
+                    }}>1</span>
+                    Just type 'login adriel' and press Enter
+                  </li>
+                  <li style={{ 
+                    padding: '12px',
+                    backgroundColor: 'rgba(0, 255, 0, 0.1)',
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}>
+                    <span style={{ 
+                      backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                      borderRadius: '50%',
+                      width: '24px',
+                      height: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.9rem'
+                    }}>2</span>
+                    Then type 'help' to see what you can do
+                  </li>
+                </ol>
+              </div>
             </div>
           </Typography>
         </motion.div>
@@ -363,12 +433,12 @@ const Terminal = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <Typography variant="body2" sx={{ mb: 1 }}>
+            <Typography variant="body2" sx={{ mb: 1, textAlign: item.type === 'output' && !item.text.includes('<div') ? 'left' : 'inherit' }}>
               {item.type === 'output' && item.text.includes('<div') ? (
                 <div dangerouslySetInnerHTML={{ __html: item.text }} />
               ) : (
                 item.text.split('\n').map((line, i) => (
-                  <div key={i}>{line}</div>
+                  <div key={i} style={{ textAlign: 'left', fontFamily: '"Share Tech Mono", "Fira Code", "Source Code Pro", monospace' }}>{line}</div>
                 ))
               )}
             </Typography>
@@ -378,7 +448,7 @@ const Terminal = () => {
 
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography variant="body2" component="span">
-          {isAuthenticated ? `[Level ${securityLevel}]$ ` : '$ '}
+          {isAuthenticated ? '$ ' : '$ '}
         </Typography>
         <input
           ref={inputRef}
@@ -395,15 +465,10 @@ const Terminal = () => {
             fontFamily: '"Share Tech Mono", "Fira Code", "Source Code Pro", monospace',
             fontSize: '1rem',
             width: '100%',
+            direction: 'ltr',
+            textAlign: 'left'
           }}
         />
-        <Typography
-          variant="body2"
-          component="span"
-          sx={{ opacity: cursorVisible ? 1 : 0 }}
-        >
-          ▊
-        </Typography>
       </Box>
     </Box>
   );
