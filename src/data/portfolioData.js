@@ -3,20 +3,14 @@ export const portfolioData = {
   introductions: {
     description: 'Personal Introduction and Background',
     content: {
-      'about-me.txt': `<section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem; margin-bottom: 1.5rem;">
-          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Education</h2>
-          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">I am a dedicated secondary school student at the School of Science and Technology (SST), taking the Engineering+ subject combination, which includes applied subjects in Computing+ and Electronics. As part of the Integrated Diploma Programme (IDP), a through-train pathway to Ngee Ann Polytechnic, I am working towards joining the Cybersecurity & Digital Forensics course at the School of ICT.</p>
-        </section>
-
-        <section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem; margin-bottom: 1.5rem;">
-          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Aspiration</h2>
-          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">I am an aspiring Cybersecurity professional, specifically in the field of penetration testing. Driven by curiosity and a passion for problem-solving, I am eager to contribute to the ever-evolving landscape of digital security. My commitment to cybersecurity is reflected in my continuous pursuit of knowledge and practical skills in this field.</p>
-        </section>
-
-        <section style="background: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.15); padding: 1.2rem;">
-          <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Plans</h2>
-          <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.6;">Currently preparing for the eJPT (eLearnSecurity Junior Penetration Tester) certification. My future goals include obtaining the eCPPT (eLearnSecurity Certified Professional Penetration Tester) and OSCP (Offensive Security Certified Professional) certifications to further my expertise in offensive security techniques.</p>
-        </section>`
+      'about-me.txt': `<div style="padding: 0;">
+        <h2 style="color: #00ff00; font-size: 1.6rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Education</h2>
+        <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">I am a dedicated secondary school student at the School of Science and Technology (SST), taking the Engineering+ subject combination, which includes applied subjects in Computing+ and Electronics. As part of the Integrated Diploma Programme (IDP), a through-train pathway to Ngee Ann Polytechnic, I am working towards joining the Cybersecurity & Digital Forensics course at the School of ICT.</p>
+        <h2 style="color: #00ff00; font-size: 1.6rem; margin: 0.8rem 0 0 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Aspiration</h2>
+        <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">I am an aspiring Cybersecurity professional, specifically in the field of penetration testing. Driven by curiosity and a passion for problem-solving, I am eager to contribute to the ever-evolving landscape of digital security. My commitment to cybersecurity is reflected in my continuous pursuit of knowledge and practical skills in this field.</p>
+        <h2 style="color: #00ff00; font-size: 1.6rem; margin: 0.8rem 0 0 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Plans</h2>
+        <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">Currently preparing for the eJPT (eLearnSecurity Junior Penetration Tester) certification. My future goals include obtaining the eCPPT (eLearnSecurity Certified Professional Penetration Tester) and OSCP (Offensive Security Certified Professional) certifications to further my expertise in offensive security techniques.</p>
+      </div>`
     }
   },
 

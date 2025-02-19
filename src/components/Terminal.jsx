@@ -25,13 +25,13 @@ const formatCertification = (cert) => {
         <div style="background: rgba(0, 255, 0, 0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15);">
           <h2 style="color: #00ff00; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase;">Details</h2>
           <div style="display: grid; gap: 1rem;">
-            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+            <p style="color: #00ff00; font-size: 1.5rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
               <strong style="color: rgba(0, 255, 0, 0.8);">Issuer:</strong> ${cert.issuer}
             </p>
-            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+            <p style="color: #00ff00; font-size: 1.5rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
               <strong style="color: rgba(0, 255, 0, 0.8);">Year:</strong> ${cert.year}
             </p>
-            <p style="color: #00ff00; font-size: 1.1rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
+            <p style="color: #00ff00; font-size: 1.5rem; padding: 12px; background: rgba(0, 255, 0, 0.1); border-radius: 6px;">
               <strong style="color: rgba(0, 255, 0, 0.8);">Status:</strong> ${cert.status}
             </p>
           </div>
@@ -40,7 +40,7 @@ const formatCertification = (cert) => {
       
       <div style="background: rgba(0, 255, 0, 0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(0, 255, 0, 0.15); margin-top: 2rem;">
         <h2 style="color: #00ff00; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase;">Description</h2>
-        <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; padding: 15px; background: rgba(0, 255, 0, 0.1); border-radius: 8px;">${cert.writeup}</p>
+        <p style="color: #00ff00; font-size: 1.5rem; line-height: 1.8; margin-bottom: 2rem; padding: 15px; background: rgba(0, 255, 0, 0.1); border-radius: 8px;">${cert.writeup}</p>
         
         <h3 style="color: #00ff00; margin: 1.5rem 0; font-size: 1.3rem; letter-spacing: 1px; text-transform: uppercase;">Skills</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px;">
@@ -58,8 +58,8 @@ const formatLeadershipEntry = (entry) => {
   return `<div class="content-card leadership-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
     <h2 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.6rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${entry.name}</h2>
     <p class="role" style="color: #00ff00; font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 0.5px;">${entry.description || entry.role}</p>
-    ${entry.details ? `<p class="details" style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; margin: 1rem 0; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.details}</p>` : ''}
-    ${entry.year ? `<p class="year" style="color: #00ff00; font-size: 1.1rem; margin-top: 1rem; opacity: 0.8;">Year: ${entry.year}</p>` : ''}
+    ${entry.details ? `<p class="details" style="color: #00ff00; font-size: 1.5rem; line-height: 1.8; margin: 1rem 0; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.details}</p>` : ''}
+    ${entry.year ? `<p class="year" style="color: #00ff00; font-size: 1.5rem; margin-top: 1rem; opacity: 0.8;">Year: ${entry.year}</p>` : ''}
   </div>`;
 };
 
@@ -67,17 +67,17 @@ const formatIDPEntry = (entry) => {
   return `<div class="content-card idp-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 25px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
     <h2 style="color: #00ff00; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.6rem; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">${entry.name}</h2>
     <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
-      <p class="status" style="color: #00ff00; font-size: 1.1rem; padding: 0.5rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Status: ${entry.status}</p>
-      <p class="year" style="color: #00ff00; font-size: 1.1rem; padding: 0.5rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Year: ${entry.year}</p>
+      <p class="status" style="color: #00ff00; font-size: 1.5rem; padding: 1.0rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Status: ${entry.status}</p>
+      <p class="year" style="color: #00ff00; font-size: 1.5rem; padding: 1.0rem 1rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px;">Year: ${entry.year}</p>
     </div>
     <div class="description" style="margin: 1.5rem 0;">
       <h3 style="color: #00ff00; margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 1px;">Overview</h3>
-      <p style="color: #00ff00; font-size: 1.1rem; line-height: 1.8; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.writeup}</p>
+      <p style="color: #00ff00; font-size: 1.5rem; line-height: 1.8; padding: 1rem; background: rgba(0, 255, 0, 0.05); border-radius: 8px;">${entry.writeup}</p>
     </div>
     <div class="skills" style="margin-top: 1.5rem;">
       <h3 style="color: #00ff00; margin-bottom: 1rem; font-size: 1.3rem; letter-spacing: 1px;">Key Skills</h3>
       <ul style="color: #00ff00; list-style-position: inside; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem;">
-        ${entry.skills.map(skill => `<li style="margin-bottom: 0.3rem; font-size: 1.1rem; padding: 0.4rem 0.8rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px; transition: all 0.3s ease;">${skill}</li>`).join('')}
+        ${entry.skills.map(skill => `<li style="margin-bottom: 0.3rem; font-size: 1.5rem; padding: 0.4rem 0.8rem; background: rgba(0, 255, 0, 0.1); border-radius: 4px; transition: all 0.3s ease;">${skill}</li>`).join('')}
       </ul>
     </div>
   </div>`;
@@ -125,27 +125,27 @@ const Terminal = () => {
           ? `<div class="help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 25px;">
               <div style="padding: 20px; border-bottom: 1px solid rgba(0, 255, 0, 0.2); margin-bottom: 20px;">
                 <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Command Center</h2>
-                <p style="color: rgba(0, 255, 0, 0.9); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">Navigate through my portfolio using these simple commands:</p>
+                <p style="color: rgba(0, 255, 0, 0.9); font-size: 1.5rem; line-height: 1.8; margin-bottom: 1rem;">Navigate through my portfolio using these simple commands:</p>
               </div>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                 <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
-                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">ls</span></p>
+                  <p style="margin-bottom: 0.8rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1.0rem;">📂 <span style="color: #00ff00; font-weight: bold;">ls</span></p>
                   <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Show what files and folders are here</p>
                 </div>
                 <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
-                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📂 <span style="color: #00ff00; font-weight: bold;">cd</span></p>
+                  <p style="margin-bottom: 0.8rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1.0rem;">📂 <span style="color: #00ff00; font-weight: bold;">cd</span></p>
                   <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Open a folder (use "cd .." to go back)</p>
                 </div>
                 <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
-                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">📄 <span style="color: #00ff00; font-weight: bold;">cat</span></p>
+                  <p style="margin-bottom: 0.8rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1.0rem;">📄 <span style="color: #00ff00; font-weight: bold;">cat</span></p>
                   <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Read a file's contents</p>
                 </div>
                 <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
-                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🔍 <span style="color: #00ff00; font-weight: bold;">clear</span></p>
+                  <p style="margin-bottom: 0.8rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1.0rem;">🔍 <span style="color: #00ff00; font-weight: bold;">clear</span></p>
                   <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Clean up the screen</p>
                 </div>
                 <div style="background: rgba(0, 255, 0, 0.05); padding: 15px; border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
-                  <p style="margin-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">🚪 <span style="color: #00ff00; font-weight: bold;">logout</span></p>
+                  <p style="margin-bottom: 0.8rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1.0rem;">🚪 <span style="color: #00ff00; font-weight: bold;">logout</span></p>
                   <p style="color: rgba(0, 255, 0, 0.8); font-size: 0.9rem;">Exit the system</p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ const Terminal = () => {
           : `<div class="login-help-card" style="border: 1px solid rgba(0, 255, 0, 0.3); padding: 30px; border-radius: 12px; background-color: rgba(0, 0, 0, 0.85); box-shadow: 0 8px 32px rgba(0, 255, 0, 0.15); margin: 25px 0; backdrop-filter: blur(12px); transition: all 0.3s ease-in-out;">
               <h2 style="color: #00ff00; font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);">Welcome!</h2>
               <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">Just type "login adriel" to start exploring my portfolio!</p>
-              <p style="text-align: center; margin-top: 1rem; font-style: italic; font-size: 1.1rem; color: rgba(0, 255, 0, 0.8);">Need help? Type "help" anytime to see this message again.</p>
+              <p style="text-align: center; margin-top: 1rem; font-style: italic; font-size: 1.5rem; color: rgba(0, 255, 0, 0.8);">Need help? Type "help" anytime to see this message again.</p>
             </div>`;
       case 'login':
         return handleAuthentication(args[0]);
@@ -228,7 +228,7 @@ const Terminal = () => {
                 <div style="padding: 25px; border-bottom: 2px solid rgba(0, 255, 0, 0.15); display: flex; justify-content: space-between; align-items: center;">
                   <div>
                     <h3 style="color: #00ff00; font-size: 2rem; margin: 0 0 12px 0; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); font-weight: 600;">${args[0]}</h3>
-                    <span style="color: rgba(0, 255, 0, 0.8); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(0, 255, 0, 0.1); padding: 6px 12px; border-radius: 4px;">File Content</span>
+                    <span style="color: rgba(0, 255, 0, 0.8); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(0, 255, 0, 0.1); padding: 6px 12px; border-radius: 4px;">File Content</span>
                   </div>
                   <div style="width: 40px; height: 40px; border: 2px solid rgba(0, 255, 0, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <span style="color: #00ff00; font-size: 1.2rem;">📄</span>
@@ -255,7 +255,7 @@ const Terminal = () => {
                 <span style="color: rgba(0, 255, 0, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">File Content</span>
               </div>
               <div style="padding: 20px;">
-                <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.1rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05); text-align: left;">${fileContent}</div>
+                <div style="white-space: pre-wrap; line-height: 1.8; font-size: 1.5rem; padding: 15px; background-color: rgba(0, 255, 0, 0.05); border-radius: 8px; border: 1px solid rgba(0, 255, 0, 0.1); box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.05); text-align: left;">${fileContent}</div>
               </div>
             </div>
           </div>`;
@@ -359,7 +359,7 @@ const Terminal = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <Typography variant="body2" sx={{ color: '#00ff00', mb: 2, textAlign: 'left' }}>
+          <Typography variant="body2" sx={{ color: '#00ff00', mb: 2, textAlign: 'left', fontSize: '1.5rem' }}>
             <div className="welcome-card" style={{
               border: '1px solid rgba(0, 255, 0, 0.3)',
               padding: '30px',
@@ -391,7 +391,7 @@ const Terminal = () => {
                 <p style={{ 
                   marginBottom: '1.5rem',
                   lineHeight: '1.8',
-                  fontSize: '1.1rem',
+                  fontSize: '1.5rem',
                   color: 'rgba(0, 255, 0, 0.9)',
                   textAlign: 'left'
                 }}>Welcome to my interactive portfolio! This is a fun way to explore my achievements and experiences. It's super easy:</p>
@@ -466,7 +466,7 @@ const Terminal = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <Typography variant="body2" sx={{ mb: 1, textAlign: item.type === 'output' && !item.text.includes('<div') ? 'left' : 'inherit' }}>
+            <Typography variant="body2" sx={{ mb: 1, textAlign: item.type === 'output' && !item.text.includes('<div') ? 'left' : 'inherit', fontSize: '1.2rem' }}>
               {item.type === 'output' && item.text.includes('<div') ? (
                 <div dangerouslySetInnerHTML={{ __html: item.text }} />
               ) : (
@@ -480,7 +480,7 @@ const Terminal = () => {
       </AnimatePresence>
 
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" sx={{ fontSize: '1.2rem' }}>
           {isAuthenticated ? '$ ' : '$ '}
         </Typography>
         <input
@@ -496,7 +496,7 @@ const Terminal = () => {
             color: '#00ff00',
             outline: 'none',
             fontFamily: '"Share Tech Mono", "Fira Code", "Source Code Pro", monospace',
-            fontSize: '1rem',
+            fontSize: '1.2rem',
             width: '100%',
             direction: 'ltr',
             textAlign: 'left'
